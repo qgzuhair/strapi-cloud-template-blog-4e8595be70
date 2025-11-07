@@ -1,0 +1,39 @@
+{
+  "collectionName": "components_shared_heroes",
+  "info": {
+    "displayName": "Hero",
+    "icon": "star"
+  },
+  "options": {},
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "Description": {
+      "type": "blocks"
+    },
+    "PrimaryButtonText": {
+      "type": "string"
+    },
+    "PrimaryButtonURL": {
+      "type": "string"
+    },
+    "SecondaryButtonText": {
+      "type": "string"
+    },
+    "SecondaryButtonURL": {
+      "type": "string"
+    },
+    "HeroImage": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  },
+  "config": {}
+}

@@ -1,0 +1,46 @@
+{
+  "kind": "collectionType",
+  "collectionName": "points_transactions",
+  "info": {
+    "singularName": "points-transaction",
+    "pluralName": "points-transactions",
+    "displayName": "Points Transaction"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "company_profile": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::company-profile.company-profile",
+      "inversedBy": "points_transactions"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "Purchase",
+        "Debit",
+        "Refund"
+      ]
+    },
+    "pointsAmount": {
+      "type": "integer"
+    },
+    "pricePaid": {
+      "type": "decimal"
+    },
+    "currency": {
+      "type": "string"
+    },
+    "relatedResumeView": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::resume-view.resume-view"
+    },
+    "notes": {
+      "type": "string"
+    }
+  }
+}

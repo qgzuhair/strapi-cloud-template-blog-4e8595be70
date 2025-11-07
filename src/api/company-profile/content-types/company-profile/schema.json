@@ -1,0 +1,73 @@
+{
+  "kind": "collectionType",
+  "collectionName": "company_profiles",
+  "info": {
+    "singularName": "company-profile",
+    "pluralName": "company-profiles",
+    "displayName": "Company Profile"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user",
+      "mappedBy": "company_profile"
+    },
+    "companyName": {
+      "type": "string"
+    },
+    "website": {
+      "type": "string"
+    },
+    "logo": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "industry": {
+      "type": "string"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "location": {
+      "type": "string"
+    },
+    "contactPerson": {
+      "type": "string"
+    },
+    "pointsBalance": {
+      "type": "integer"
+    },
+    "billingInfo": {
+      "type": "json"
+    },
+    "jobs": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::job.job",
+      "mappedBy": "company_profile"
+    },
+    "resume_views": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::resume-view.resume-view",
+      "mappedBy": "company_profile"
+    },
+    "points_transactions": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::points-transaction.points-transaction",
+      "mappedBy": "company_profile"
+    }
+  }
+}

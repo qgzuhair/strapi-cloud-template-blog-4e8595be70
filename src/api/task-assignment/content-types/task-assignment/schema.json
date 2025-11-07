@@ -1,0 +1,67 @@
+{
+  "kind": "collectionType",
+  "collectionName": "task_assignments",
+  "info": {
+    "singularName": "task-assignment",
+    "pluralName": "task-assignments",
+    "displayName": "Task Assignment"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "candidate_profile": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::candidate-profile.candidate-profile",
+      "inversedBy": "task_assignments"
+    },
+    "job": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::job.job",
+      "inversedBy": "task_assignments"
+    },
+    "assignedBy": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::company-profile.company-profile"
+    },
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "startDate": {
+      "type": "date"
+    },
+    "dueDate": {
+      "type": "date"
+    },
+    "TaskAssignmentStatus": {
+      "type": "enumeration",
+      "enum": [
+        "Assigned",
+        "In Progress",
+        "Submitted",
+        "Reviewed",
+        "Completed"
+      ]
+    },
+    "deliverables": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "payment": {
+      "type": "decimal"
+    }
+  }
+}

@@ -1,0 +1,142 @@
+{
+  "kind": "collectionType",
+  "collectionName": "candidate_profiles",
+  "info": {
+    "singularName": "candidate-profile",
+    "pluralName": "candidate-profiles",
+    "displayName": "Candidate Profile"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "profilePhoto": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "fullName": {
+      "type": "string"
+    },
+    "professionalTitle": {
+      "type": "string"
+    },
+    "phoneNumber": {
+      "type": "string"
+    },
+    "city": {
+      "type": "string"
+    },
+    "country": {
+      "type": "string"
+    },
+    "education": {
+      "type": "json"
+    },
+    "yearsOfExperience": {
+      "type": "string"
+    },
+    "availability": {
+      "type": "enumeration",
+      "enum": [
+        "Full-time (40+ hours/week)",
+        "Part-time (20-40 hours/week)",
+        "Contract basis",
+        "Freelancer",
+        "Not available"
+      ]
+    },
+    "hourlyRate": {
+      "type": "decimal"
+    },
+    "language": {
+      "type": "json"
+    },
+    "skills": {
+      "type": "json"
+    },
+    "experience": {
+      "type": "json"
+    },
+    "portfolioUrl": {
+      "type": "string"
+    },
+    "LinkedInUrl": {
+      "type": "string"
+    },
+    "resumeFiles": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "primaryResume": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "resumeParsed": {
+      "type": "json"
+    },
+    "rating": {
+      "type": "decimal"
+    },
+    "govtPhotoID": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "isVerified": {
+      "type": "boolean"
+    },
+    "applications": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::application.application",
+      "mappedBy": "candidate_profile"
+    },
+    "task_assignments": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::task-assignment.task-assignment",
+      "mappedBy": "candidate_profile"
+    },
+    "user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    },
+    "resume": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::resume.resume",
+      "inversedBy": "candidate"
+    },
+    "certifications": {
+      "type": "json"
+    },
+    "bio": {
+      "type": "blocks"
+    }
+  }
+}

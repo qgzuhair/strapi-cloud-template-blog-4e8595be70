@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_repeatable_how_it_works_tabs",
+  "info": {
+    "displayName": "Tabs",
+    "icon": "pencil"
+  },
+  "options": {},
+  "attributes": {
+    "tabTitle": {
+      "type": "string"
+    },
+    "Step": {
+      "type": "component",
+      "component": "repeatable.step",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

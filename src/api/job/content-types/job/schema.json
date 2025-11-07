@@ -1,0 +1,74 @@
+{
+  "kind": "collectionType",
+  "collectionName": "jobs",
+  "info": {
+    "singularName": "job",
+    "pluralName": "jobs",
+    "displayName": "Job"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "company_profile": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::company-profile.company-profile",
+      "inversedBy": "jobs"
+    },
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "Full Time",
+        "Part Time",
+        "Freelance",
+        "Contract"
+      ]
+    },
+    "skills": {
+      "type": "json"
+    },
+    "location": {
+      "type": "string"
+    },
+    "salaryRange": {
+      "type": "string"
+    },
+    "jobStatus": {
+      "type": "enumeration",
+      "enum": [
+        "Draft",
+        "Published",
+        "Closed"
+      ]
+    },
+    "startsAt": {
+      "type": "datetime"
+    },
+    "endsAt": {
+      "type": "datetime"
+    },
+    "maxApplicants": {
+      "type": "integer"
+    },
+    "applications": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::application.application",
+      "mappedBy": "job"
+    },
+    "task_assignments": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::task-assignment.task-assignment",
+      "mappedBy": "job"
+    }
+  }
+}

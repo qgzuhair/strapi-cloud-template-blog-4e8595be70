@@ -1,0 +1,48 @@
+{
+  "kind": "collectionType",
+  "collectionName": "applications",
+  "info": {
+    "singularName": "application",
+    "pluralName": "applications",
+    "displayName": "Application"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "candidate_profile": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::candidate-profile.candidate-profile",
+      "inversedBy": "applications"
+    },
+    "job": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::job.job",
+      "inversedBy": "applications"
+    },
+    "resume": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::resume.resume",
+      "inversedBy": "application"
+    },
+    "applicationStatus": {
+      "type": "enumeration",
+      "enum": [
+        "Applied",
+        "Shortlisted",
+        "Rejected",
+        "Accepted"
+      ]
+    },
+    "coverLetter": {
+      "type": "string"
+    },
+    "appliedAt": {
+      "type": "datetime"
+    }
+  }
+}

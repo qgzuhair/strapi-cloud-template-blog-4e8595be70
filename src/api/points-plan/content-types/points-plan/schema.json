@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "points_plans",
+  "info": {
+    "singularName": "points-plan",
+    "pluralName": "points-plans",
+    "displayName": "Points Plan"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "points": {
+      "type": "integer"
+    },
+    "price": {
+      "type": "decimal"
+    },
+    "currency": {
+      "type": "string"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "active": {
+      "type": "boolean"
+    }
+  }
+}

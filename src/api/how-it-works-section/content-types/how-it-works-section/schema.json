@@ -1,0 +1,26 @@
+{
+  "kind": "singleType",
+  "collectionName": "how_it_works_sections",
+  "info": {
+    "singularName": "how-it-works-section",
+    "pluralName": "how-it-works-sections",
+    "displayName": "How It Works Section"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "sectionTitle": {
+      "type": "string"
+    },
+    "sectionDescription": {
+      "type": "blocks"
+    },
+    "Tabs": {
+      "type": "component",
+      "component": "repeatable.how-it-works-tab",
+      "repeatable": true
+    }
+  }
+}

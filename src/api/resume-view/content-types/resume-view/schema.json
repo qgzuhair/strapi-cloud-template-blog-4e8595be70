@@ -1,0 +1,50 @@
+{
+  "kind": "collectionType",
+  "collectionName": "resume_views",
+  "info": {
+    "singularName": "resume-view",
+    "pluralName": "resume-views",
+    "displayName": "Resume View"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "company_profile": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::company-profile.company-profile",
+      "inversedBy": "resume_views"
+    },
+    "resume": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::resume.resume"
+    },
+    "pointsCharged": {
+      "type": "integer"
+    },
+    "viewedAt": {
+      "type": "datetime"
+    },
+    "ipAddress": {
+      "type": "string"
+    },
+    "device": {
+      "type": "string"
+    },
+    "ResumeViewStatus": {
+      "type": "enumeration",
+      "enum": [
+        "Success",
+        "Failed"
+      ]
+    },
+    "transaction": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::points-transaction.points-transaction"
+    }
+  }
+}
