@@ -9,6 +9,9 @@
     "Title": {
       "type": "string"
     },
+    "subTitle": {
+      "type": "string"
+    },
     "Description": {
       "type": "blocks"
     },

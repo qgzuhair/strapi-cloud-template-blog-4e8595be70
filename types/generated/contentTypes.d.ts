@@ -626,7 +626,8 @@ export interface ApiCandidateProfileCandidateProfile
         'Freelancer',
         'Not available',
       ]
-    >;
+    > &
+      Schema.Attribute.DefaultTo<'Not available'>;
     bio: Schema.Attribute.Blocks;
     certifications: Schema.Attribute.JSON;
     city: Schema.Attribute.String;
@@ -640,9 +641,9 @@ export interface ApiCandidateProfileCandidateProfile
     govtPhotoID: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios'
     >;
-    hourlyRate: Schema.Attribute.Decimal;
+    hourlyRate: Schema.Attribute.Decimal & Schema.Attribute.DefaultTo<0>;
     isVerified: Schema.Attribute.Boolean;
-    language: Schema.Attribute.JSON;
+    languages: Schema.Attribute.JSON;
     LinkedInUrl: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<

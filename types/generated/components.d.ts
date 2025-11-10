@@ -38,6 +38,7 @@ export interface SharedHero extends Struct.ComponentSchema {
     PrimaryButtonURL: Schema.Attribute.String;
     SecondaryButtonText: Schema.Attribute.String;
     SecondaryButtonURL: Schema.Attribute.String;
+    subTitle: Schema.Attribute.String;
     Title: Schema.Attribute.String;
   };
 }

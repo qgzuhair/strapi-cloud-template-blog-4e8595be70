@@ -44,6 +44,7 @@
     },
     "availability": {
       "type": "enumeration",
+      "default": "Not available",
       "enum": [
         "Full-time (40+ hours/week)",
         "Part-time (20-40 hours/week)",
@@ -53,9 +54,10 @@
       ]
     },
     "hourlyRate": {
-      "type": "decimal"
+      "type": "decimal",
+      "default": 0
     },
-    "language": {
+    "languages": {
       "type": "json"
     },
     "skills": {
