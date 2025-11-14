@@ -14,8 +14,7 @@
     "user": {
       "type": "relation",
       "relation": "oneToOne",
-      "target": "plugin::users-permissions.user",
-      "mappedBy": "company_profile"
+      "target": "plugin::users-permissions.user"
     },
     "companyName": {
       "type": "string"
@@ -39,10 +38,10 @@
     "description": {
       "type": "richtext"
     },
-    "location": {
+    "address": {
       "type": "string"
     },
-    "contactPerson": {
+    "contactName": {
       "type": "string"
     },
     "pointsBalance": {
@@ -68,6 +67,33 @@
       "relation": "oneToMany",
       "target": "api::points-transaction.points-transaction",
       "mappedBy": "company_profile"
+    },
+    "foundedYear": {
+      "type": "string"
+    },
+    "city": {
+      "type": "string"
+    },
+    "country": {
+      "type": "string"
+    },
+    "contactTitle": {
+      "type": "string"
+    },
+    "contactPhone": {
+      "type": "integer"
+    },
+    "contactEmail": {
+      "type": "email"
+    },
+    "projectTypes": {
+      "type": "json"
+    },
+    "linkedin": {
+      "type": "string"
+    },
+    "companySize": {
+      "type": "string"
     }
   }
 }

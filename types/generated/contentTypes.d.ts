@@ -728,28 +728,37 @@ export interface ApiCompanyProfileCompanyProfile
     draftAndPublish: true;
   };
   attributes: {
+    address: Schema.Attribute.String;
     billingInfo: Schema.Attribute.JSON;
+    city: Schema.Attribute.String;
     companyName: Schema.Attribute.String;
-    contactPerson: Schema.Attribute.String;
+    companySize: Schema.Attribute.String;
+    contactEmail: Schema.Attribute.Email;
+    contactName: Schema.Attribute.String;
+    contactPhone: Schema.Attribute.Integer;
+    contactTitle: Schema.Attribute.String;
+    country: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     description: Schema.Attribute.RichText;
+    foundedYear: Schema.Attribute.String;
     industry: Schema.Attribute.String;
     jobs: Schema.Attribute.Relation<'oneToMany', 'api::job.job'>;
+    linkedin: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::company-profile.company-profile'
     > &
       Schema.Attribute.Private;
-    location: Schema.Attribute.String;
     logo: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     points_transactions: Schema.Attribute.Relation<
       'oneToMany',
       'api::points-transaction.points-transaction'
     >;
     pointsBalance: Schema.Attribute.Integer;
+    projectTypes: Schema.Attribute.JSON;
     publishedAt: Schema.Attribute.DateTime;
     resume_views: Schema.Attribute.Relation<
       'oneToMany',
@@ -1612,10 +1621,6 @@ export interface PluginUsersPermissionsUser
   };
   attributes: {
     blocked: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
-    company_profile: Schema.Attribute.Relation<
-      'oneToOne',
-      'api::company-profile.company-profile'
-    >;
     confirmationToken: Schema.Attribute.String & Schema.Attribute.Private;
     confirmed: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     createdAt: Schema.Attribute.DateTime;
