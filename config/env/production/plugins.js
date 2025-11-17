@@ -1,23 +1,23 @@
-module.exports = ({ env }) => ({
+module.exports = {
   email: {
     config: {
       provider: 'nodemailer',
       providerOptions: {
-        host: env('SMTP_HOST', 'mail.qualitasglobal.ai'),
-        port: env.int('SMTP_PORT', 465),
+        host: process.env.SMTP_HOST,
+        port: Number(process.env.SMTP_PORT),
         auth: {
-          user: env('SMTP_USERNAME'),
-          pass: env('SMTP_PASSWORD'),
+          user: process.env.SMTP_USERNAME,
+          pass: process.env.SMTP_PASSWORD,
         },
-        secure: env.int('SMTP_PORT') === 465, // true for 465, false for 587
+        secure: Number(process.env.SMTP_PORT) === 465,
         tls: {
-          rejectUnauthorized: true,
+          rejectUnauthorized: false, // <- IMPORTANT fix for cPanel / custom servers
         },
       },
       settings: {
-        defaultFrom: env('SMTP_FROM', 'info@qualitasglobal.ai'),
-        defaultReplyTo: env('SMTP_REPLY_TO', 'info@qualitasglobal.ai'),
+        defaultFrom: process.env.SMTP_FROM,
+        defaultReplyTo: process.env.SMTP_REPLY_TO,
       },
     },
   },
-});
+};
