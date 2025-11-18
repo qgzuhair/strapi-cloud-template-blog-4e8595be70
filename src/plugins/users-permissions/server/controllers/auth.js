@@ -1,55 +1,39 @@
 "use strict";
 
-// Load the core controller
-const coreAuth = require("@strapi/plugin-users-permissions/server/controllers/auth");
+module.exports = (plugin) => {
+  const originalRegister = plugin.controllers.auth.register;
 
-module.exports = {
-  async register(ctx) {
-    try {
-      console.log("🔥 CUSTOM REGISTER — Controller loaded");
+  plugin.controllers.auth.register = async (ctx) => {
+    console.log("🔥 CUSTOM REGISTER OVERRIDE EXECUTED");
 
-      // Extract custom fields
-      const { userType, ...rest } = ctx.request.body;
+    const { userType, ...rest } = ctx.request.body;
 
-      // Allowed values
-      const allowedTypes = ["candidate", "company"];
-      const finalUserType = allowedTypes.includes(userType)
-        ? userType
-        : "candidate";
+    const allowedTypes = ["candidate", "company"];
+    const finalUserType = allowedTypes.includes(userType)
+      ? userType
+      : "candidate";
 
-      // Remove userType before sending to Strapi core
-      ctx.request.body = rest;
+    ctx.request.body = { ...rest };
 
-      // Call Strapi default register
-      const response = await coreAuth.register(ctx);
+    const response = await originalRegister(ctx);
 
-      console.log("🔥 User created:", response.user?.email);
+    if (response.user) {
+      await strapi.entityService.update(
+        "plugin::users-permissions.user",
+        response.user.id,
+        { data: { userType: finalUserType } }
+      );
 
-      if (response.user) {
-        // Update userType field
-        await strapi.entityService.update(
-          "plugin::users-permissions.user",
-          response.user.id,
-          {
-            data: { userType: finalUserType },
-          }
-        );
+      await strapi
+        .plugin("users-permissions")
+        .service("user")
+        .sendConfirmationEmail(response.user);
 
-        console.log("🔥 userType updated to:", finalUserType);
-
-        // Send confirmation email manually
-        await strapi
-          .plugin("users-permissions")
-          .service("user")
-          .sendConfirmationEmail(response.user);
-
-        console.log("🔥 Confirmation email attempted to send");
-      }
-
-      return response;
-    } catch (error) {
-      console.error("❌ Custom register error:", error);
-      throw error;
+      console.log("📧 Confirmation email triggered for:", response.user.email);
     }
-  },
+
+    return response;
+  };
+
+  return plugin;
 };

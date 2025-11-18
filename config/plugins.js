@@ -1,23 +1,23 @@
-module.exports = {
+module.exports = ({ env }) => ({
   email: {
     config: {
       provider: 'nodemailer',
       providerOptions: {
-  host: process.env.SMTP_HOST,
-  port: 587,
-  secure: false, // TLS (not SSL)
-  auth: {
-    user: process.env.SMTP_USERNAME,
-    pass: process.env.SMTP_PASSWORD,
-  },
-  tls: {
-    rejectUnauthorized: false,
-  },
-},
+        host: 'md-ht-1.webhostbox.net',
+        port: 587,
+        secure: false, // TLS, NOT SSL
+        auth: {
+          user: env('SMTP_USERNAME'),
+          pass: env('SMTP_PASSWORD'),
+        },
+        tls: {
+          rejectUnauthorized: false, // cPanel requires this
+        },
+      },
       settings: {
-        defaultFrom: process.env.SMTP_FROM,
-        defaultReplyTo: process.env.SMTP_REPLY_TO,
+        defaultFrom: env('SMTP_FROM'),
+        defaultReplyTo: env('SMTP_REPLY_TO'),
       },
     },
   },
-};
+});
