@@ -657,9 +657,7 @@ export interface ApiCandidateProfileCandidateProfile
       'images' | 'files' | 'videos' | 'audios'
     >;
     professionalTitle: Schema.Attribute.String;
-    profilePhoto: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios'
-    >;
+    profilePhoto: Schema.Attribute.Media<'images'>;
     publishedAt: Schema.Attribute.DateTime;
     rating: Schema.Attribute.Decimal;
     resume: Schema.Attribute.Relation<'oneToOne', 'api::resume.resume'>;
