@@ -32,10 +32,10 @@
     "applicationStatus": {
       "type": "enumeration",
       "enum": [
-        "Applied",
-        "Shortlisted",
-        "Rejected",
-        "Accepted"
+        "submitted",
+        "shortlisted",
+        "rejected",
+        "accepted"
       ]
     },
     "coverLetter": {
