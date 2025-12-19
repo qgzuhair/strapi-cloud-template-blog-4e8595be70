@@ -1,14 +1,14 @@
-name: Keep Strapi Awake
+# name: Keep Strapi Awake
 
-on:
-  schedule:
-    - cron: "*/10 * * * *"   # every 10 minutes
-  workflow_dispatch:         # allows manual run
+#on:
+ # schedule:
+  #  - cron: "*/10 * * * *"   # every 10 minutes
+  #workflow_dispatch:         # allows manual run
 
-jobs:
-  ping:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Ping Strapi API
-        run: |
-          curl -I https://heroic-cactus-60ce03044c.strapiapp.com/api/home || true
+#jobs:
+ # ping:
+  #  runs-on: ubuntu-latest
+   # steps:
+    #  - name: Ping Strapi API
+     #   run: |
+      #    curl -I https://heroic-cactus-60ce03044c.strapiapp.com/api/home || true
