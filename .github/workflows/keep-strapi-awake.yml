@@ -11,4 +11,4 @@ jobs:
     steps:
       - name: Ping Strapi API
         run: |
-          curl -I https://heroic-cactus-60ce03044c.strapiapp.com/api/health || true
+          curl -I https://heroic-cactus-60ce03044c.strapiapp.com/api/home || true
