@@ -35,9 +35,6 @@
     "industry": {
       "type": "string"
     },
-    "description": {
-      "type": "richtext"
-    },
     "address": {
       "type": "string"
     },
@@ -94,6 +91,19 @@
     },
     "companySize": {
       "type": "string"
+    },
+    "benefits": {
+      "type": "json"
+    },
+    "description": {
+      "type": "blocks"
+    },
+    "tagline": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "companyName"
     }
   }
 }

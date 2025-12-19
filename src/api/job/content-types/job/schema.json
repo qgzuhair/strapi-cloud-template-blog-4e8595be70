@@ -20,9 +20,6 @@
     "title": {
       "type": "string"
     },
-    "description": {
-      "type": "richtext"
-    },
     "type": {
       "type": "enumeration",
       "enum": [
@@ -36,9 +33,6 @@
       "type": "json"
     },
     "location": {
-      "type": "string"
-    },
-    "salaryRange": {
       "type": "string"
     },
     "jobStatus": {
@@ -69,6 +63,38 @@
       "relation": "oneToMany",
       "target": "api::task-assignment.task-assignment",
       "mappedBy": "job"
+    },
+    "description": {
+      "type": "blocks"
+    },
+    "minSalary": {
+      "type": "integer"
+    },
+    "maxSalary": {
+      "type": "integer"
+    },
+    "experience": {
+      "type": "string"
+    },
+    "responsibilities": {
+      "type": "blocks"
+    },
+    "requirements": {
+      "type": "blocks"
+    },
+    "niceToHave": {
+      "type": "blocks"
+    },
+    "benefits": {
+      "type": "blocks"
+    },
+    "category": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title",
+      "required": true
     }
   }
 }

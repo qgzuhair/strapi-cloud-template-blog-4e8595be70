@@ -4,7 +4,7 @@ export default {
       const emailService = strapi.plugin('email').service('email');
 
       await emailService.send({
-        to: "zuhair.naqvi@qualitasglobal.com",
+        to: "syed.zuhair.naqvi@gmail.com",
         from: "info@qualitasglobal.ai",
         subject: "Strapi 5 BigRock SMTP Test Email",
         text: "Hello Zuhair! This is a working test email from Strapi 5.",

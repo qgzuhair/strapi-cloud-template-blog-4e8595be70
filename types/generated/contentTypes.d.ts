@@ -471,7 +471,7 @@ export interface ApiApplicationApplication extends Struct.CollectionTypeSchema {
   };
   attributes: {
     applicationStatus: Schema.Attribute.Enumeration<
-      ['Applied', 'Shortlisted', 'Rejected', 'Accepted']
+      ['submitted', 'shortlisted', 'rejected', 'accepted']
     >;
     appliedAt: Schema.Attribute.DateTime;
     candidate_profile: Schema.Attribute.Relation<
@@ -727,6 +727,7 @@ export interface ApiCompanyProfileCompanyProfile
   };
   attributes: {
     address: Schema.Attribute.String;
+    benefits: Schema.Attribute.JSON;
     billingInfo: Schema.Attribute.JSON;
     city: Schema.Attribute.String;
     companyName: Schema.Attribute.String;
@@ -739,7 +740,7 @@ export interface ApiCompanyProfileCompanyProfile
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    description: Schema.Attribute.RichText;
+    description: Schema.Attribute.Blocks;
     foundedYear: Schema.Attribute.String;
     industry: Schema.Attribute.String;
     jobs: Schema.Attribute.Relation<'oneToMany', 'api::job.job'>;
@@ -762,6 +763,8 @@ export interface ApiCompanyProfileCompanyProfile
       'oneToMany',
       'api::resume-view.resume-view'
     >;
+    slug: Schema.Attribute.UID<'companyName'>;
+    tagline: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -879,6 +882,8 @@ export interface ApiJobJob extends Struct.CollectionTypeSchema {
       'oneToMany',
       'api::application.application'
     >;
+    benefits: Schema.Attribute.Blocks;
+    category: Schema.Attribute.String;
     company_profile: Schema.Attribute.Relation<
       'manyToOne',
       'api::company-profile.company-profile'
@@ -886,17 +891,23 @@ export interface ApiJobJob extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    description: Schema.Attribute.RichText;
+    description: Schema.Attribute.Blocks;
     endsAt: Schema.Attribute.DateTime;
+    experience: Schema.Attribute.String;
     jobStatus: Schema.Attribute.Enumeration<['Draft', 'Published', 'Closed']>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::job.job'> &
       Schema.Attribute.Private;
     location: Schema.Attribute.String;
     maxApplicants: Schema.Attribute.Integer;
+    maxSalary: Schema.Attribute.Integer;
+    minSalary: Schema.Attribute.Integer;
+    niceToHave: Schema.Attribute.Blocks;
     publishedAt: Schema.Attribute.DateTime;
-    salaryRange: Schema.Attribute.String;
+    requirements: Schema.Attribute.Blocks;
+    responsibilities: Schema.Attribute.Blocks;
     skills: Schema.Attribute.JSON;
+    slug: Schema.Attribute.UID<'title'> & Schema.Attribute.Required;
     startsAt: Schema.Attribute.DateTime;
     task_assignments: Schema.Attribute.Relation<
       'oneToMany',
