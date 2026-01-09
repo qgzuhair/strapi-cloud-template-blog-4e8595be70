@@ -49,12 +49,6 @@
         "Public",
         "Private"
       ]
-    },
-    "application": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::application.application",
-      "mappedBy": "resume"
     }
   }
 }

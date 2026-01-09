@@ -23,12 +23,6 @@
       "target": "api::job.job",
       "inversedBy": "applications"
     },
-    "resume": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::resume.resume",
-      "inversedBy": "application"
-    },
     "applicationStatus": {
       "type": "enumeration",
       "enum": [
@@ -39,10 +33,23 @@
       ]
     },
     "coverLetter": {
-      "type": "string"
+      "type": "blocks"
     },
-    "appliedAt": {
-      "type": "datetime"
+    "resumeFile": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "company_profile": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::company-profile.company-profile",
+      "inversedBy": "applications"
     }
   }
 }

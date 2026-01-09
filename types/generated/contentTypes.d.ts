@@ -473,12 +473,15 @@ export interface ApiApplicationApplication extends Struct.CollectionTypeSchema {
     applicationStatus: Schema.Attribute.Enumeration<
       ['submitted', 'shortlisted', 'rejected', 'accepted']
     >;
-    appliedAt: Schema.Attribute.DateTime;
     candidate_profile: Schema.Attribute.Relation<
       'manyToOne',
       'api::candidate-profile.candidate-profile'
     >;
-    coverLetter: Schema.Attribute.String;
+    company_profile: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::company-profile.company-profile'
+    >;
+    coverLetter: Schema.Attribute.Blocks;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -490,7 +493,9 @@ export interface ApiApplicationApplication extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
-    resume: Schema.Attribute.Relation<'oneToOne', 'api::resume.resume'>;
+    resumeFile: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -727,6 +732,10 @@ export interface ApiCompanyProfileCompanyProfile
   };
   attributes: {
     address: Schema.Attribute.String;
+    applications: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::application.application'
+    >;
     benefits: Schema.Attribute.JSON;
     billingInfo: Schema.Attribute.JSON;
     city: Schema.Attribute.String;
@@ -1091,10 +1100,6 @@ export interface ApiResumeResume extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    application: Schema.Attribute.Relation<
-      'oneToOne',
-      'api::application.application'
-    >;
     candidate: Schema.Attribute.Relation<
       'oneToOne',
       'api::candidate-profile.candidate-profile'

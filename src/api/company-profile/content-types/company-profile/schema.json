@@ -104,6 +104,12 @@
     "slug": {
       "type": "uid",
       "targetField": "companyName"
+    },
+    "applications": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::application.application",
+      "mappedBy": "company_profile"
     }
   }
 }
