@@ -1,7 +1,7 @@
 module.exports = {
   email: {
   config: {
-    provider: 'nodemailer',
+    provider: 'sendmail',
     providerOptions: {
       host: process.env.SMTP_HOST,
       port: 465,
